@@ -1,0 +1,6 @@
+# Ignore large files
+RAG/Lib/site-packages/cv2/cv2.pyd
+RAG/Lib/site-packages/torch/lib/torch_cpu.dll
+RAG/Lib/site-packages/torch/lib/dnnl.lib
+
+/RAG/Lib/
