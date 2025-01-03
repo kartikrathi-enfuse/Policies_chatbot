@@ -4,3 +4,8 @@ RAG/Lib/site-packages/torch/lib/torch_cpu.dll
 RAG/Lib/site-packages/torch/lib/dnnl.lib
 
 /RAG/Lib/
+__pycache__/
+.chainlit/
+Data/
+RAG/
+.env
