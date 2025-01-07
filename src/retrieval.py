@@ -2,7 +2,7 @@ from sentence_transformers import SentenceTransformer
 import faiss
 import numpy as np
 
-def retrieve_relevant_chunks(query, index, metadata, top_k, model_name='all-MiniLM-L6-v2',threshold=1):
+def retrieve_relevant_chunks(query, index, metadata, top_k, model_name='all-MiniLM-L6-v2',threshold=1.5):
     """Retrieve top_k relevant chunks from the FAISS index."""
     embedding_model = SentenceTransformer(model_name)
     query_embedding = embedding_model.encode([query]).astype(np.float32)
@@ -18,7 +18,7 @@ def retrieve_relevant_chunks(query, index, metadata, top_k, model_name='all-Mini
 
 if __name__ == '__main__':
     from embedding import load_faiss_index, load_metadata
-    query = 'What is the process for changing my Working hours shift?'
+    query = 'Is there any plateform on which I have to apply for the leaves ?'
     faiss_index_path = r"D:\RAG\embeddings\hr_policy_faiss.index"
     metadata_path = r"D:\RAG\embeddings\hr_policy_faiss_metadata.pkl"
     index = load_faiss_index(faiss_index_path)

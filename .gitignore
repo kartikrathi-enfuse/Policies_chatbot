@@ -9,3 +9,4 @@ __pycache__/
 Data/
 RAG/
 .env
+src/__pycache__

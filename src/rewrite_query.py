@@ -21,15 +21,9 @@ def rewrite_query_for_rag(query):
 
     # Define the prompt
     prompt_jd = f"""
-    Rewrite the given user query to make it precise and specific for retrieving accurate information from a
-    retrieval-augmented generation (RAG) system. Focus on HR policies and include all relevant details to ensure clarity.
-    Dont include any additional information to the input query. ** USER BELONGS TO INDIA **
-
-    Args:
-        user_query (str): Original query {query} from the user.
-
-    Returns:
-        str: Rewritten query for accurate retrieval.
+    Correct the grammatical errors in the following query without changing its meaning.
+    Focus only on fixing spelling, punctuation, or structural issues:
+    "{query}"
     """
 
     # Generate response
@@ -40,6 +34,6 @@ def rewrite_query_for_rag(query):
 
 # Example usage
 if __name__ == "__main__":
-    query = "What is the procedure to take 5 or more days leave"
+    query = "What are the HR policies related of matrnity leve"
     rewritten_query = rewrite_query_for_rag(query)
     print(rewritten_query)
