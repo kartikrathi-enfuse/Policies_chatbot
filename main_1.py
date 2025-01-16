@@ -2,16 +2,41 @@ import os
 import chainlit as cl
 from main import main  #original code is in `main.py`
 
+@cl.set_starters
+async def set_starters():
+    return [
+        cl.Starter(
+            label="Understanding Leaves Policies",
+            message="Can you explain the company Leaves policies",
+            icon="/public/new_img.png",
+        ),
+
+        cl.Starter(
+            label="Total No. of leaves",
+            message="What are the total number of leaves available to the full time employee",
+            icon="/public/new_img.png",
+        ),
+        
+        cl.Starter(
+            label="Attendence Check-in / Check-out",
+            message="What is the correct process for checking in and checking out on Zoho?",
+           icon="/public/new_img.png",
+        )
+    ]
+
+
+
+
 # Chainlit handler for chatbot startup
-@cl.on_chat_start
-async def on_startup():
-    """
-    Send a welcome message when the chatbot starts.
-    """
-    welcome_message = "Hey, I'm your HR policy chatbot. Please ask a question!"
-    await cl.Message(
-        content=welcome_message,
-    ).send()
+# @cl.on_chat_start
+# async def on_startup():
+#     """
+#     Send a welcome message when the chatbot starts.
+#     """
+#     welcome_message = "Hey, I'm your HR policy chatbot. Please ask a question!"
+#     await cl.Message(
+#         content=welcome_message,
+#     ).send()
 
 # Wrapper to interact with the main function
 @cl.on_message

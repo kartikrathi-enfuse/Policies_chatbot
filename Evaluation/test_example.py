@@ -1,20 +1,41 @@
-from rag_evaluator import RAGEvaluator
+import pandas as pd
+from src.embedding import load_faiss_index, load_metadata
+from src.retrieval import retrieve_relevant_chunks
+from src.qa import create_llm_chain
+from src.rewrite_query import rewrite_query_for_rag  
 
-evaluator = RAGEvaluator()
+# Load FAISS index and metadata
+faiss_index_path = r'D:\RAG\embeddings\hr_policy_faiss.index'
+metadata_path = r'D:\RAG\embeddings\hr_policy_faiss_metadata.pkl'
 
-question = "Under what conditions can an employee apply for Compensatory Off?"
-response = '''The Employees can only apply for Compensatory Off if they fulfill the following two criteria:  
-▪ The Employee should have worked for One Full Day - On account of a project 
-requirement pre -approved by the respective Manager  
-▪ The Employee should be a Full -time resource
-approved  Holiday / Week off working would be marked as a compensatory off in the system. 
-It can be availed during the eligibility period (provided all the eligibility / validity criteria are 
-qualifying).  
-1.3.  Eligibility for Applying for Compensatory Off"
-'''
-reference = ''' "1. The employee should have worked for one full day due to a project requirement, pre-approved by the respective manager.
-    2. The employee should be a full-time resource.
-    3. The compensatory off can be applied during the eligibility period, provided all the eligibility/validity criteria are qualifying."
-'''
+# Load the FAISS index and metadata
+faiss_index = load_faiss_index(faiss_index_path)
+metadata = load_metadata(metadata_path)
 
-metrics = evaluator.evaluate_all(question, response, reference)
+# Load the Excel file containing the queries
+excel_path = r'C:\Users\kartik.rathi_enfuse-\Desktop\test_sheet_2.xlsx'
+df = pd.read_excel(excel_path)
+
+# Process each query in the 'Ques' column
+for idx, row in df.iterrows():
+    query = row['Ques']
+
+    # Step 1: Rewrite the query using the rewrite_query_for_rag function
+    rewritten_query = rewrite_query_for_rag(query)
+    df.at[idx, 'Rewritten_Query'] = rewritten_query  # Store the rewritten query in the DataFrame
+
+    # Step 2: Retrieve relevant chunks using the rewritten query
+    retrieved_chunks = retrieve_relevant_chunks(rewritten_query, index=faiss_index, metadata=metadata, top_k=3)
+    context_extract = "\n".join([chunk for chunk, _ in retrieved_chunks])
+    df.at[idx, 'Context_extract'] = context_extract  # Store the retrieved context in the DataFrame
+
+    # Step 3: Generate the answer using the context and rewritten query
+    answer = create_llm_chain(context_extract, rewritten_query)
+    # generated_answer = answer['text']
+    df.at[idx, 'Generated_answer'] = answer  # Store the generated answer in the DataFrame
+
+# Save the updated DataFrame to the Excel file
+output_excel_path = r'D:\RAG\queries_with_answers_3.xlsx'
+df.to_excel(output_excel_path, index=False)
+
+print(f"Processing completed. Results saved to '{output_excel_path}'.")
