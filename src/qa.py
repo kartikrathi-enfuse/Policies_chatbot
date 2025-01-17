@@ -16,7 +16,7 @@ def create_llm_chain(context, re_query, model_repo_id="mistralai/Mistral-7B-Inst
 
     prompt_template = """
     You are an AI assistant trained to answer questions about HR policies in structured format.
-    Given the following context and user query, provide a concise and accurate answer.Dont include any Note, Steps and Extra information.
+    Given the following context and user query, provide a concise and accurate answer.Dont Hallucinate ,dont include any Note, Steps and Extra information.
 
     Context:
     {context}
