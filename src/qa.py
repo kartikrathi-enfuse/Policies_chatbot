@@ -15,8 +15,12 @@ def create_llm_chain(context, re_query, model_repo_id="mistralai/Mistral-7B-Inst
 
 
     prompt_template = """
-    You are an AI assistant trained to answer questions about HR policies in structured format.
-    Given the following context and user query, provide a concise and accurate answer.Dont Hallucinate ,dont include any Note, Steps and Extra information.
+    You are an AI assistant trained to answer questions about HR policies in a friendly and personalized tone.
+    Your responses should:
+    1. Be concise and use conversational language.
+    2. Address the user directly (e.g., "You are entitled to..." instead of "Employees are entitled to...").
+    3. Use only the provided context to answer the query.
+    4. If the context does not include the information, respond with: "I'm sorry, but I couldn't find that information in the provided context."
 
     Context:
     {context}
@@ -24,7 +28,7 @@ def create_llm_chain(context, re_query, model_repo_id="mistralai/Mistral-7B-Inst
     Query:
     {query}
 
-    Answer:
+    Personalized Answer:
     """
 
     prompt = PromptTemplate(
@@ -35,40 +39,3 @@ def create_llm_chain(context, re_query, model_repo_id="mistralai/Mistral-7B-Inst
     chain = prompt | hf_model | StrOutputParser()
 
     return chain.invoke({'context': context, 'query': re_query})
-
-
-
-# def create_llm_chain(model_repo_id="mistralai/Mistral-7B-Instruct-v0.3"):
-#     """Create the LangChain LLM chain for question answering."""
-#     os.environ["HUGGINGFACEHUB_API_TOKEN"] = "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"
-#     hf_model = HuggingFaceEndpoint(
-#         repo_id=model_repo_id,
-#         task="text2text-generation"
-#     )
-
-#     prompt_template = """
-#     You are an AI assistant trained to answer questions about HR policies in structured format.
-#     Given the following context and user query, provide a concise and accurate answer.Dont include headlines.
-    
-#     Context:
-#     {context}
-
-#     Query:
-#     {query}
-
-#     Answer:
-#     """
-
-#     prompt = PromptTemplate(
-#         input_variables=["context", "re_query"],
-#         template=prompt_template
-#     )
-
-#     return LLMChain(llm=hf_model, prompt=prompt)
-
-# def get_answer(llm_chain, context, re_query):
-#     # Create a refined prompt that combines context and query
-#     # prompt = f"Context: {context}\n\nQuery: {re_query}\n\nAnswer:"
-
-#     # Invoke the LLM chain with the combined prompt
-#     return llm_chain.invoke({'context': context, 'query': re_query})
