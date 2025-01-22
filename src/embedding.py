@@ -18,11 +18,13 @@ def is_faiss_index_empty(faiss_index_path):
 def generate_embeddings(chunks, model_name='all-MiniLM-L6-v2'):
     """Generate embeddings for the given chunks using the SentenceTransformer."""
     embedding_model = SentenceTransformer(model_name)
-    return embedding_model.encode(chunks, show_progress_bar=True).astype(np.float32)
+    embeddings =  embedding_model.encode(chunks, show_progress_bar=True).astype(np.float32)
+    faiss.normalize_L2(embeddings) #Use norm for cosine similarity
+    return embeddings
 
 def create_faiss_index(embeddings):
-    """Create a FAISS index and add embeddings."""
-    index = faiss.IndexFlatL2(embeddings.shape[1])
+    """Create a FAISS index for cosine sim and add embeddings."""
+    index = faiss.IndexFlatIP(embeddings.shape[1])
     index.add(embeddings)
     return index
 
