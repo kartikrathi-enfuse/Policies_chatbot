@@ -2,27 +2,6 @@ HR Policies RAG Chatbot
 
 Welcome to the HR Policies RAG Chatbot project! This chatbot uses Retrieval-Augmented Generation (RAG) to provide accurate, context-aware answers about HR policies of EnFuse Solutions.
 
-Table of Contents : 
-
-Overview
-
-Features
-
-Architecture
-
-Setup Instructions
-
-Usage
-
-Technologies Used
-
-Folder Structure
-
-Future Enhancements
-
-Contributing
-
-
 Overview : 
 
 The HR Policies RAG Chatbot is designed to:

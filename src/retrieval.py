@@ -2,7 +2,7 @@ from sentence_transformers import SentenceTransformer
 import faiss
 import numpy as np
 
-def retrieve_relevant_chunks(query, index, metadata, top_k, model_name='all-MiniLM-L6-v2',threshold=0.7):
+def retrieve_relevant_chunks(query, index, metadata, top_k, model_name='all-MiniLM-L6-v2',threshold=0.3):
     """Retrieve top_k relevant chunks from the FAISS index using cosine similarity"""
     embedding_model = SentenceTransformer(model_name)
     query_embedding = embedding_model.encode([query]).astype(np.float32)
