@@ -24,21 +24,6 @@ async def set_starters():
         )
     ]
 
-
-
-
-# Chainlit handler for chatbot startup
-# @cl.on_chat_start
-# async def on_startup():
-#     """
-#     Send a welcome message when the chatbot starts.
-#     """
-#     welcome_message = "Hey, I'm your HR policy chatbot. Please ask a question!"
-#     await cl.Message(
-#         content=welcome_message,
-#     ).send()
-
-# Wrapper to interact with the main function
 @cl.on_message
 async def process_query(message: cl.Message):
     """
