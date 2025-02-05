@@ -1,61 +1,10 @@
 import os
 from langchain_huggingface import HuggingFaceEndpoint
 from langchain.prompts import PromptTemplate
-from langchain.chains import LLMChain
 from langchain_core.output_parsers import StrOutputParser
 
-# from dotenv import load_dotenv
-# import google.generativeai as genai
-# from langchain_core.runnables.base import Runnable
-# from langchain.chains.question_answering import load_qa_chain
-# from langchain_google_genai import ChatGoogleGenerativeAI
-# def create_llm_chain(context, re_query):
-#     # Load environment variables
-#     load_dotenv()
-
-#     # Configure the Generative AI API
-#     genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
-
-#     # Define the generation configuration
-#     generation_config = {
-#         'temperature': 0,
-#         'max_output_tokens': 1000,
-#         'top_p': 0.2
-#     }
-
-#     # Initialize the model
-#     model = genai.GenerativeModel(model_name='gemini-pro', generation_config=generation_config)
-
-#     prompt_template = """
-#     You are an AI assistant trained to answer questions about HR policies in a friendly and personalized tone.
-#     Your responses should:
-#     1. Be concise/Short and use conversational language.
-#     2. Address the user directly (e.g., "You are entitled to..." instead of "Employees are entitled to...").
-#     3. Use only the provided context to answer the query.
-#     4. If the context does not include the information, respond with: "I'm sorry, but I couldn't find that information in the provided context."
-
-#     Context:
-#     {context}
-
-#     Query:
-#     {re_query}
-
-#     Personalized Answer:
-#     """
-
-#     prompt = PromptTemplate(
-#     input_variables=["context", "re_query"],
-#     template=prompt_template
-#     )
-
-#     chain = prompt | model | StrOutputParser()
-
-#     return chain.invoke({'context': context, 'query': re_query})
-
-
-def create_llm_chain(context, re_query, model_repo_id="mistralai/Mistral-7B-Instruct-v0.3"):
-
-    os.environ["HUGGINGFACEHUB_API_TOKEN"] = "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"
+def create_llm_chain(context, re_query, model_repo_id="mistralai/Mistral-Nemo-Instruct-2407"):
+    api_key = os.getenv("HUGGINGFACEHUB_API_TOKEN")
 
     hf_model = HuggingFaceEndpoint(
         repo_id=model_repo_id,
@@ -65,7 +14,7 @@ def create_llm_chain(context, re_query, model_repo_id="mistralai/Mistral-7B-Inst
     prompt_template = """
     You are an AI assistant trained to answer questions about HR policies in a friendly and personalized tone.
     Your responses should:
-    1. Be concise and use conversational language.
+    1. Be concise, Short and use conversational language.
     2. Address the user directly (e.g., "You are entitled to..." instead of "Employees are entitled to...").
     3. Use only the provided context to answer the query.
     4. If the context does not include the information, respond with: "I'm sorry, but I couldn't find that information in the provided context."
