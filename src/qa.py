@@ -3,7 +3,7 @@ from langchain_huggingface import HuggingFaceEndpoint
 from langchain.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 
-def create_llm_chain(context, re_query, model_repo_id="mistralai/Mistral-Nemo-Instruct-2407"):
+def create_llm_chain(context, re_query, model_repo_id="mistralai/Mistral-7B-Instruct-v0.3"):
     api_key = os.getenv("HUGGINGFACEHUB_API_TOKEN")
 
     hf_model = HuggingFaceEndpoint(
@@ -16,8 +16,9 @@ def create_llm_chain(context, re_query, model_repo_id="mistralai/Mistral-Nemo-In
     Your responses should:
     1. Be concise, Short and use conversational language.
     2. Address the user directly (e.g., "You are entitled to..." instead of "Employees are entitled to...").
-    3. Use only the provided context to answer the query.
-    4. If the context does not include the information, respond with: "I'm sorry, but I couldn't find that information in the provided context."
+    3. Use only the provided context to answer the query and dont make asssumption or generate new information or duration .
+    4. If the context does not include the information, respond with: "I'm sorry, but I Dont have the information "
+    5. Avoid Phrases like "In the provided context " or "Based on Given context " .
 
     Context:
     {context}
