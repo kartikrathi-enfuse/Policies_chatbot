@@ -20,14 +20,14 @@ def rewrite_query_for_rag(query):
     model = genai.GenerativeModel(model_name='gemini-pro', generation_config=generation_config)
 
     # Define the prompt
-    prompt_jd = f"""
+    prompt = f"""
     Correct the grammatical errors in the following query without changing its meaning.
     Focus only on fixing spelling, punctuation, or structural issues:
     "{query}"
     """
 
     # Generate response
-    response_jd = model.generate_content([prompt_jd])
+    response_jd = model.generate_content([prompt])
 
     # Extract and return the text
     return response_jd.parts[0].text
