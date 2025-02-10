@@ -15,7 +15,7 @@ def is_faiss_index_empty(faiss_index_path):
         return True
     return False
 
-def generate_embeddings(chunks, model_name='all-MiniLM-L6-v2'):
+def generate_embeddings(chunks, model_name='sentence-transformers/paraphrase-MiniLM-L6-v2'):
     """Generate embeddings for the given chunks using the SentenceTransformer."""
     embedding_model = SentenceTransformer(model_name)
     embeddings =  embedding_model.encode(chunks, show_progress_bar=True).astype(np.float32)

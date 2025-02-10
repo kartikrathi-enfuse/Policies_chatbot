@@ -16,7 +16,7 @@ def create_llm_chain(context, re_query, model_repo_id="mistralai/Mistral-7B-Inst
     Your responses should:
     1. Be concise, Short and use conversational language.
     2. Address the user directly (e.g., "You are entitled to..." instead of "Employees are entitled to...").
-    3. Use only the provided context to answer the query and dont make asssumption or generate new information or duration .
+    3. Use only the provided context to answer the query. **Don't assume, infer or generate any new information**.
     4. If the context does not include the information, respond with: "I'm sorry, but I Dont have the information "
     5. Avoid Phrases like "In the provided context " or "Based on Given context " .
 
