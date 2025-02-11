@@ -119,8 +119,8 @@ def process_and_evaluate(file_path, output_file):
     df.to_excel(output_file, index=False)
 
 # File paths
-input_file = "D:\RAG\queries_with_answers_3.xlsx"  # Update with the path to your input Excel file
-output_file = "output_with_metrics_1.xlsx"  # Path where the output will be saved
+input_file = r"D:\RAG\queries_with_answers_3.xlsx"  # Update with the path to your input Excel file
+output_file = r"output_with_metrics_1.xlsx"  # Path where the output will be saved
 
 # Run the process
 process_and_evaluate(input_file, output_file)
