@@ -19,9 +19,9 @@ def retrieve_relevant_chunks(query, index, metadata, top_k, model_name='sentence
 
 if __name__ == '__main__':
     from embedding import load_faiss_index, load_metadata
-    query = 'What is the total number of leaves available to the Contractual Employees / STP?'
+    query = 'Will any public holiday can be carry forward to next financial year?'
     faiss_index_path = r"D:\RAG\embeddings\hr_policy_faiss.index"
     metadata_path = r"D:\RAG\embeddings\hr_policy_faiss_metadata.pkl"
     index = load_faiss_index(faiss_index_path)
     metadata = load_metadata(metadata_path)
-    print(retrieve_relevant_chunks(query, index, metadata, top_k=5, model_name='all-MiniLM-L6-v2'))
+    print(retrieve_relevant_chunks(query, index, metadata, top_k=4, model_name='all-MiniLM-L6-v2'))
