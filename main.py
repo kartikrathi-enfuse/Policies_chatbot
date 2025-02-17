@@ -8,7 +8,9 @@ from src.retrieval import retrieve_relevant_chunks
 from src.embedding import is_faiss_index_empty, create_faiss_index, save_faiss_index, load_faiss_index, load_metadata
 from src.qa import create_llm_chain  # Assuming these are in a separate file
 from src.rewrite_query import rewrite_query_for_rag
+from src.router import is_general_question
 from dotenv import load_dotenv
+
 load_dotenv()
 
 os.environ["LANGCHAIN_API_KEY"] = os.getenv("LANGCHAIN_API_KEY")
@@ -42,9 +44,13 @@ def main(pdf_folder, query):
     else:
         print("FAISS index already exists. Skipping chunking and embedding.")
 
-    # Step 5: Load FAISS index and metadata
+    #Load FAISS index and metadata
     index = load_faiss_index(faiss_index_path)
     metadata = load_metadata(metadata_path)
+
+    #handling greeting msg
+    if is_general_question(query):
+        return "Hello! How can I assist you"
 
     #Rewrite the Query
     re_query = rewrite_query_for_rag(query)
