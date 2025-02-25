@@ -8,7 +8,8 @@ def create_llm_chain(context, re_query, model_repo_id="mistralai/Mistral-7B-Inst
 
     hf_model = HuggingFaceEndpoint(
         repo_id=model_repo_id,
-        task="text2text-generation"
+        task="text2text-generation",
+        temperature=0.2
         )
 
     prompt_template = """
