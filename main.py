@@ -69,12 +69,12 @@ def main(pdf_folder, query):
         output = create_llm_chain(context=context, re_query=re_query)
 
     # print(f"Answer: {answer}")
-    print("--------------------------------")
-    print(output)
+    # print("--------------------------------")
+    # print(output)
     return output
 
 
 if __name__ == "__main__":
     pdf_folder = "Data/"
     query = "What is the procedure to take 5 or more days leave"
-    main(pdf_folder, query)
+    print(main(pdf_folder, query))
