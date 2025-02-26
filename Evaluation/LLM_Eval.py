@@ -20,7 +20,7 @@ generation_config = {
 }
 
 # Initialize the model
-model = genai.GenerativeModel(model_name='gemini-pro', generation_config=generation_config)
+model = genai.GenerativeModel(model_name='gemini-2.0-flash', generation_config=generation_config)
 
 def gemini_evaluation(query, answer, context):
     """
