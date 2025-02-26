@@ -8,8 +8,7 @@ def create_llm_chain(context, re_query, model_repo_id="mistralai/Mistral-7B-Inst
 
     hf_model = HuggingFaceEndpoint(
         repo_id=model_repo_id,
-        task="text2text-generation",
-        temperature=0.2
+        task="text-generation"
         )
 
     prompt_template = """
@@ -17,9 +16,10 @@ def create_llm_chain(context, re_query, model_repo_id="mistralai/Mistral-7B-Inst
     Your responses should:
     1. Be concise, Short and use conversational language.
     2. Address the user directly (e.g., "You are entitled to..." instead of "Employees are entitled to...").
-    3. Use only the provided context to answer the query. **Don't assume, infer or generate any new information**.
-    4. If the context does not include the information, respond with: "I'm sorry, but I Dont have the information "
-    5. Avoid Phrases like "In the provided context " or "Based on Given context " .
+    3. Use only the provided context to answer the query.
+    4. If the context does not include the information, respond with: "I'm sorry, but I don't have that information."
+    5. Avoid Phrases like "In the provided context" or "Based on Given context".
+    6.  Don't assume, Dont calculate, dont infer and dont generate any new information.
 
     Context:
     {context}
