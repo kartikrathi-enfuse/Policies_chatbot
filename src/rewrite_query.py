@@ -21,9 +21,11 @@ def rewrite_query_for_rag(query):
 
     # Define the prompt
     prompt = f"""
-    Correct the grammatical errors in the following query without changing its meaning.
-    Focus only on fixing spelling, punctuation, or structural issues:
-    "{query}"
+    Correct any grammatical errors in the following query while preserving its original meaning.
+    Only fix spelling, punctuation, or sentence structure issues.
+    If no correction is needed, return the query exactly as it is, without additional explanation.
+
+    Query: {query}
     """
 
     # Generate response
@@ -34,6 +36,6 @@ def rewrite_query_for_rag(query):
 
 # Example usage
 if __name__ == "__main__":
-    query = "What are the HR policies related of matrnity leve"
+    query = "What is the attendance and punctuality polici?"
     rewritten_query = rewrite_query_for_rag(query)
     print(rewritten_query)
