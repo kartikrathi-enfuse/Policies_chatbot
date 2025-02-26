@@ -19,7 +19,7 @@ def retrieve_relevant_chunks(query, index, metadata, top_k, model_name='sentence
 
 if __name__ == '__main__':
     from embedding import load_faiss_index, load_metadata
-    query = 'Will any public holiday can be carry forward to next financial year?'
+    query = 'Will external vendors also give feedback at appraisal time'
     faiss_index_path = r"D:\RAG\embeddings\hr_policy_faiss.index"
     metadata_path = r"D:\RAG\embeddings\hr_policy_faiss_metadata.pkl"
     index = load_faiss_index(faiss_index_path)
