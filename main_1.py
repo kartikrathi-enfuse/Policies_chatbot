@@ -21,7 +21,28 @@ async def set_starters():
             label="Attendence Check-in / Check-out",
             message="What is the correct process for checking in and checking out on Zoho?",
            icon="/public/new_img.png",
+        ),
+        cl.Starter(
+            label="Public Holiday Leaves calendar",
+            message="Public Holiday Leaves calendar",
+            icon="/public/new_img.png",
+        ),
+        cl.Starter(
+            label="Maternity leave ",
+            message="Tell me the details about the maternity leaves. Explain in short",
+            icon="/public/new_img.png",
+        ),
+        cl.Starter(
+            label="Where we can report for Sexual harrasement",
+            message="Where we can report for Sexual harrasement",
+            icon="/public/new_img.png",
+        ),
+        cl.Starter(
+            label="Attendence Regularisation",
+            message="How to apply for regularisation of attendence",
+            icon="/public/new_img.png",
         )
+        
     ]
 
 @cl.on_message
