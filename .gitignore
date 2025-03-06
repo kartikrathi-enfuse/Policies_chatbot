@@ -11,3 +11,4 @@ RAG/
 .env
 src/__pycache__/
 Evaluation/__pycache__/
+*.pyc
