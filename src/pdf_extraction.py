@@ -21,4 +21,4 @@ def extract_text_from_pdfs(pdf_folder):
     return all_text
 
 if __name__ == "__main__":
-    print(extract_text_from_pdfs('D:\RAG\Data')[0])
+    print(extract_text_from_pdfs(r"D:\RAG\Data"))
