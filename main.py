@@ -57,7 +57,7 @@ def main(pdf_folder, query):
     print(re_query)
 
     # Step 6: Retrieve relevant chunks based on the query
-    retrieved_chunks = retrieve_relevant_chunks(re_query, index, metadata, top_k=3)
+    retrieved_chunks = retrieve_relevant_chunks(re_query, index, metadata, top_k=5)
 
     if not retrieved_chunks:
         return "Sorry, I dont have answer for your question. Please mail your query ==> hr@enfuse-solutions.com"
@@ -75,6 +75,6 @@ def main(pdf_folder, query):
 
 
 if __name__ == "__main__":
-    pdf_folder = "Data/"
+    pdf_folder = r"D:\RAG\Data"
     query = "What is the procedure to take 5 or more days leave"
     print(main(pdf_folder, query))
