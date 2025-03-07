@@ -6,9 +6,12 @@ general_queries = [
 
 def is_general_question(query):
     """Check if the user query is a general/small talk question"""
-    return any(query.lower().strip().startswith(greet) for greet in general_queries)
+    query = query.lower().strip()
+    if query in general_queries:  # Check if query exactly matches a general query
+        return "Hello! How can I assist you today?"
+    return False  # Return False if it's not an exact match
 
 # Example usage
-user_input = "Hi"
+user_input = "Hi, tell me about Leaves"
 bot_response = is_general_question(user_input)
 print(bot_response)  # Output: "Hello! How can I assist you today?"
