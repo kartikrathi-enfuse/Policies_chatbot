@@ -1,14 +1,33 @@
-# Welcome to Chainlit! 🚀🤖
+# My Name is Engene - Your's HR Policies Chatbot
 
-Hi there, Developer! 👋 We're excited to have you on board. Chainlit is a powerful tool designed to help you prototype, debug and share applications built on top of LLMs.
+## Overview
+Engene is an advanced AI chatbot designed to assist employees with queries related to various HR policies. The chatbot leverages Retrieval-Augmented Generation (RAG) to provide accurate and up-to-date answers based on predefined company policies.
 
-## Useful Links 🔗
+## Features
+- Provides responses to HR policy-related questions.
+- Uses a knowledge base to retrieve relevant information.
+- Supports natural language queries.
 
-- **Documentation:** Get started with our comprehensive [Chainlit Documentation](https://docs.chainlit.io) 📚
-- **Discord Community:** Join our friendly [Chainlit Discord](https://discord.gg/k73SQ3FyUh) to ask questions, share your projects, and connect with other developers! 💬
+## Supported HR Policies
+Engene can answer questions related to the following HR policies:
+1. **Acceptable Use Policy**
+2. **Attendance and Punctuality**
+3. **Comp Off (Compensatory Off)**
+4. **Diversity and Inclusion**
+5. **Dress Code**
+6. **Code of Conduct**
+7. **Social Media Policy**
+8. **Exit Process Flow**
+9. **Internal Job Posting (IJP)**
+10. **Leave Policy**
+11. **Non-Discrimination and Anti-Harassment**
+12. **Performance Appraisal**
+13. **Prevention of Sexual Harassment (POSH)**
 
-We can't wait to see what you create with Chainlit! Happy coding! 💻😊
+## Usage
+- Start the chatbot interface.
+- Ask any HR policy-related question.
+- Engene will provide a response based on the company's HR guidelines.
 
-## Welcome screen
-
-To modify the welcome screen, edit the `chainlit.md` file at the root of your project. If you do not want a welcome screen, just leave this file empty.
+## Support
+For any issues or enhancements, contact the HR team or the development team.
