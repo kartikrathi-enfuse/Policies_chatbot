@@ -20,7 +20,8 @@ def retrieve_relevant_chunks(query, index, metadata, top_k, model_name='sentence
 
 if __name__ == '__main__':
     from embedding import load_faiss_index, load_metadata
-    query = 'Who is eligible for Internal Job Posting'
+    # query = 'Who is eligible for Internal Job Posting'
+    query = "Any approved Compensatory Off is valid for 365 days"
     faiss_index_path = r"D:\RAG\embeddings\hr_policy_faiss.index"
     metadata_path = r"D:\RAG\embeddings\hr_policy_faiss_metadata.pkl"
     index = load_faiss_index(faiss_index_path)
