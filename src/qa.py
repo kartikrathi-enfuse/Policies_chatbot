@@ -1,24 +1,23 @@
 import os
-from langchain_huggingface import HuggingFaceEndpoint
 from langchain.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_google_genai import ChatGoogleGenerativeAI
 
-def create_llm_chain(context, re_query, model_repo_id="mistralai/Mistral-7B-Instruct-v0.3"):
+def create_llm_chain(context, re_query):
     api_key = os.getenv("GOOGLE_API_KEY")
 
-    llm = ChatGoogleGenerativeAI(model='gemini-2.0-flash', google_api_key=api_key,temperature=0.5)
+    llm = ChatGoogleGenerativeAI(model='gemini-2.0-flash', google_api_key=api_key,temperature=0.7)
 
     prompt_template = """
     You are an AI assistant trained to answer Enfuse Solutions Employees questions about HR policies in a friendly and personalized tone.
     **IMPORTANT RULES **
     - You **MUST** only use the provided context to answer the query.
-    - If the answer is **not explicitly mentioned in the context **, say :
+    - If the answer is **not mentioned in the context **, say :
     ** I'm sorry, but I don't have that information.Please mail your query to hr@enfusesolutions.com for assistance.**
     - **Don't infer, assume, or generate new information **
     - Be concise, direct and Conversational.
     - Address the user directly (e.g., "You are entitled to..." instead of "Employees are entitled to...").
-    - You must give answer from the provided context only.
+    - ** You must give answer from the provided context only **.
 
     Context:
     {context}
