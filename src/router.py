@@ -8,10 +8,10 @@ def is_general_question(query):
     """Check if the user query is a general/small talk question"""
     query = query.lower().strip()
     if query in general_queries:  # Check if query exactly matches a general query
-        return "Hello! How can I assist you today?"
+        return "Hello! I'm Engene, your HR policies chatbot! How can I assist you today?"
     return False  # Return False if it's not an exact match
 
 # Example usage
-user_input = "Hi, tell me about Leaves"
+user_input = "Hi"
 bot_response = is_general_question(user_input)
 print(bot_response)  # Output: "Hello! How can I assist you today?"
