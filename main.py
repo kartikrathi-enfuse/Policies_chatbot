@@ -57,7 +57,7 @@ def main(pdf_folder, query):
     print(re_query)
 
     # Step 6: Retrieve relevant chunks based on the query
-    retrieved_chunks = retrieve_relevant_chunks(re_query, index, metadata, top_k=5)
+    retrieved_chunks = retrieve_relevant_chunks(re_query, index, metadata, top_k=8)
 
     if not retrieved_chunks:
         return "Sorry, I dont have answer for your question. Please mail your query ==> hr@enfuse-solutions.com"
