@@ -30,4 +30,4 @@ Engene can answer questions related to the following HR policies:
 - Engene will provide a response based on the company's HR guidelines.
 
 ## Support
-For any issues or enhancements, contact the HR team or the development team.
+For any issues or enhancements, contact the HR team ==> Hr@enfuse-solutions.com.
